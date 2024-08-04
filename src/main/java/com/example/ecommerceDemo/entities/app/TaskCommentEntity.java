@@ -1,6 +1,6 @@
 package com.example.ecommerceDemo.entities.app;
 
-import com.example.ecommerceDemo.entities.UserEntity;
+import com.example.ecommerceDemo.entities.user.UserEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "task_comment")
 public class TaskCommentEntity {
 
     @Id

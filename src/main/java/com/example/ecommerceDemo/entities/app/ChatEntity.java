@@ -1,8 +1,7 @@
     package com.example.ecommerceDemo.entities.app;
 
-    import com.example.ecommerceDemo.entities.UserEntity;
+    import com.example.ecommerceDemo.entities.user.UserEntity;
     import jakarta.persistence.*;
-    import jakarta.transaction.Transactional;
     import lombok.Data;
     import org.hibernate.annotations.CreationTimestamp;
     import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +11,7 @@
 
     @Data
     @Entity
+    @Table(name = "chats")
     public class ChatEntity {
 
         @Id

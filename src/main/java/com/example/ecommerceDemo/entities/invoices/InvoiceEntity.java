@@ -1,42 +1,51 @@
 package com.example.ecommerceDemo.entities.invoices;
 
-import com.example.ecommerceDemo.entities.UserEntity;
-import com.example.ecommerceDemo.enums.InvoiceStatus;
-import com.example.ecommerceDemo.enums.InvoiceType;
+import com.example.ecommerceDemo.entities.user.UserEntity;
+import com.example.ecommerceDemo.entities.invoices.enums.InvoiceStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
+@Table(name = "invoice")
 public class InvoiceEntity {
 
     @Id
     @GeneratedValue(generator = "custom-id")
-    @GenericGenerator(name = "custom-id", strategy = "com.example.ecommerceDemo.entities.invoices")
-    private Long invoiceId;
+    @GenericGenerator(name = "custom-id", strategy = "com.example.ecommerceDemo.entities.invoices.InvoiceIdGenerator")
+    private String invoiceId;
 
-    private String invoiceTitle;
-    private String invoiceDescription;
-    private String serviceType;
-    private int invoiceQuantity;
-    private BigDecimal unitPrice;
-    private BigDecimal totalPrice;
-
-    private InvoiceStatus invoiceStatus;
+    private LocalDate dueDate;
 
     @CreationTimestamp
-    private LocalDateTime invoiceCreated;
+    private LocalDate createDate;
+
+    @Enumerated(EnumType.STRING)
+    private InvoiceStatus invoiceStatus;
+
+    @OneToMany(mappedBy = "invoiceEntity", cascade = CascadeType.ALL)
+    private List<InvoiceDetailsEntity> invoiceDetails;
+
+    @OneToOne(mappedBy = "invoice", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private InvoiceCartEntity invoiceCart;
 
     @ManyToOne
-    private UserEntity userEntity;
+    @JoinColumn(name = "sender_id")
+    private UserEntity invoiceSender;
 
-    @ManyToOne
-    private InvoiceCartEntity invoiceCartEntity;
+    @ManyToMany
+    @JoinTable(
+            name = "invoice_recipient",
+            joinColumns = @JoinColumn(name = "invoice_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipient_id"))
+    private List<UserEntity> recipientInvoice;
 
 
 }

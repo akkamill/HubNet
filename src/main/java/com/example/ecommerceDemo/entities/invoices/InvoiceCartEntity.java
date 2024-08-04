@@ -1,13 +1,14 @@
 package com.example.ecommerceDemo.entities.invoices;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 @Entity
+@Table(name = "invoice_cart")
 public class InvoiceCartEntity {
 
     @Id
@@ -17,10 +18,11 @@ public class InvoiceCartEntity {
     private BigDecimal subTotal;
     private BigDecimal grandTotal;
     private BigDecimal discountPrice;
-    private BigDecimal InvoiceDiscount;
     private BigDecimal taxes;
 
-    @OneToMany
-    private List<InvoiceEntity> invoiceEntity;
+    @OneToOne
+    @JsonIgnore
+    @JoinColumn(name = "invoice_id")
+    private InvoiceEntity invoice;
 
 }
