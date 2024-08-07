@@ -10,6 +10,7 @@ import com.example.ecommerceDemo.services.mappers.user.UserMappers;
 import com.example.ecommerceDemo.services.others.PaymentService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,26 +23,34 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PaymentService paymentService;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, PaymentService paymentService) {
+    public UserService(UserRepository userRepository, PaymentService paymentService, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.paymentService = paymentService;
+        this.passwordEncoder = passwordEncoder;
     }
 
+
+
+
     @Transactional
-    public UserDTO createUser(UserDTO userDTO) {
+    public UserDTO registerUser(UserDTO userDTO) {
+
+        if (userRepository.findByEmailAddress(userDTO.getEmailAddress()).isPresent()) {
+            throw new RuntimeException("User with this email already exists");
+        }
 
         UserEntity user = new UserEntity();
-
         user.setName(userDTO.getName());
         user.setLastName(userDTO.getLastName());
-        user.setPassword(userDTO.getPassword());
         user.setEmailAddress(userDTO.getEmailAddress());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user.setUserStatus(UserStatus.ACTIVE);
 
-
         userRepository.save(user);
+
         return UserMappers.toDTO(user);
     }
 
@@ -104,7 +113,7 @@ public class UserService {
             throw new RuntimeException("New passwords do not match or are invalid");
         }
 
-        user.setPassword(newPassword);
+        user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
     }
 

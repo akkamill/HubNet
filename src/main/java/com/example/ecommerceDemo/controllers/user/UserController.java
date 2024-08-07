@@ -21,9 +21,9 @@ public class UserController {
     }
 
 
-    @PostMapping("/create")
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
-        userService.createUser(userDTO);
+    @PostMapping("/register")
+    public ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO) {
+        userService.registerUser(userDTO);
         return ResponseEntity.ok().build();
     }
 

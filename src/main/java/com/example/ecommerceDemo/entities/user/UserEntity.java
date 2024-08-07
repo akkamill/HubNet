@@ -14,15 +14,17 @@ import com.example.ecommerceDemo.entities.user.page.*;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Data
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity implements org.springframework.security.core.userdetails.UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +54,42 @@ public class UserEntity {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private PremiumAccount premiumAccount;
 
+    // -------------------------------------------------Security-----------------------------------------------------//
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Return roles or authorities
+        return new ArrayList<>();
+    }
+
+    @Override
+    public String getUsername() {
+        return emailAddress;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 //  -----------------------------------------------------------------------------------------------------------------//
 
