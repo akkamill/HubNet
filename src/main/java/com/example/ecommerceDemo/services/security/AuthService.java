@@ -1,9 +1,8 @@
-package com.example.ecommerceDemo.services.others;
+package com.example.ecommerceDemo.services.security;
 
-import com.example.ecommerceDemo.DTO.others.JwtResponse;
-import com.example.ecommerceDemo.DTO.others.LoginRequest;
+import com.example.ecommerceDemo.DTO.security.JwtResponse;
+import com.example.ecommerceDemo.DTO.security.LoginRequest;
 import com.example.ecommerceDemo.config.security.JwtUtil;
-import com.example.ecommerceDemo.services.user.CustomUserDetailsService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,14 +19,11 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-
-    @Autowired
     private JwtUtil jwtUtil;
 
     @Transactional
     public JwtResponse login(LoginRequest loginRequest) {
-        System.out.println("Attempting to authenticate user: " + loginRequest.getEmailAddress());
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmailAddress(), loginRequest.getPassword())
         );
@@ -35,9 +31,7 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-        System.out.println("User authenticated: " + userDetails.getUsername());
         String jwt = jwtUtil.generateToken(userDetails);
-        System.out.println("Generated JWT: " + jwt);
 
         return new JwtResponse(jwt);
     }

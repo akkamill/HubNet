@@ -34,8 +34,10 @@ public class UserEntity implements org.springframework.security.core.userdetails
     private String lastName;
     private String emailAddress;
     private String password;
+    private String provider;
 
     private UserStatus userStatus;
+
 
     @CreationTimestamp
     private LocalDateTime userCreatedAt;

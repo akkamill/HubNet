@@ -1,4 +1,4 @@
-package com.example.ecommerceDemo.DTO.others;
+package com.example.ecommerceDemo.DTO.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
