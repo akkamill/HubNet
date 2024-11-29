@@ -21,6 +21,8 @@ management, analytics, kanban, mailing, chatting and etc.
 
 * Java
 * Spring Boot
+* Spring Security
+* Spring Data JPA
 * Jakarta EE
 * JWT Authentication
 * PostgreSQL
