@@ -1,9 +1,10 @@
+# MixApp
+
 A comprehensive Spring Boot application featuring a marketplace,
 social network, blog, bank management, e-commerce, invoice 
 management, analytics, kanban, mailing, chatting and etc.
 
-
-**Features**
+## **Features**
 
 * Marketplace for buying and selling products
 * Social network for user interaction
@@ -16,7 +17,7 @@ management, analytics, kanban, mailing, chatting and etc.
 * Mailing system for communication
 * Chatting feature for real-time interaction
 
-**Technologies Used**
+## **Technologies Used**
 
 * Spring Boot
 * Jakarta EE
@@ -26,5 +27,5 @@ management, analytics, kanban, mailing, chatting and etc.
 * Maven
 * MailHog
 
-Note: This application is still under development. 
+> **Note:** This application is still under development. 
 Some features may not be fully implemented or stable yet.
