@@ -27,4 +27,4 @@ management, analytics, kanban, mailing, chatting and etc.
 * Maven
 * MailHog
 
-> ###  **Note:** This application is still under development. Some features may not be fully implemented or stable yet.
+> ####  **Note:** This application is still under development. Some features may not be fully implemented or stable yet.
