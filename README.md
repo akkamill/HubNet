@@ -1,4 +1,4 @@
-# MixApp
+# Hubnet
 
 A comprehensive Spring Boot application featuring a marketplace,
 social network, blog, bank management, e-commerce, invoice 
