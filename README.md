@@ -19,6 +19,7 @@ management, analytics, kanban, mailing, chatting and etc.
 
 ## **Technologies Used**
 
+* Java
 * Spring Boot
 * Jakarta EE
 * JWT Authentication
