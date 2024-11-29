@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>ecommersDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Hubnet</name>
+    <name>HubNet</name>
     <description>
         This project is a comprehensive Spring Boot application that integrates various features such as a marketplace,
         social network, blog, bank management, e-commerce, invoice management, analytics, kanban, mailing, chatting, and
