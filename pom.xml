@@ -11,8 +11,13 @@
     <groupId>com.example</groupId>
     <artifactId>ecommersDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ecommersDemo</name>
-    <description>Demo project for eCommerce app</description>
+    <name>MixApp</name>
+    <description>
+        This project is a comprehensive Spring Boot application that integrates various features such as a marketplace,
+        social network, blog, bank management, e-commerce, invoice management, analytics, kanban, mailing, chatting, and
+        dating functionalities. The app is designed to offer a diverse set of services in a single platform, enabling
+        users to manage their interactions, business transactions, and personal connections efficiently.
+    </description>
     <properties>
         <java.version>17</java.version>
     </properties>
