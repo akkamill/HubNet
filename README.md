@@ -1,7 +1,6 @@
 A comprehensive Spring Boot application featuring a marketplace,
 social network, blog, bank management, e-commerce, invoice 
-management, analytics, kanban, mailing, chatting, and 
-dating functionalities.
+management, analytics, kanban, mailing, chatting and etc.
 
 
 **Features**
@@ -16,7 +15,6 @@ dating functionalities.
 * Kanban board for task management
 * Mailing system for communication
 * Chatting feature for real-time interaction
-* Dating platform for connecting users
 
 **Technologies Used**
 
