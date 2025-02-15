@@ -7,13 +7,13 @@ ENTRYPOINT ["top", "-b"]
 FROM openjdk:17-jdk
 
 # Set the working directory
-WORKDIR JAVA_HOME
+WORKDIR /app
 
 # Copy the application JAR file (replace with your actual JAR file)
-COPY target/HubNet-0.0.1-SNAPSHOT.jar.original app.jar
+COPY target/HubNet-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application port
-EXPOSE 7070
+EXPOSE 8080
 
 # Run the application
 CMD ["java", "-jar", "app.jar"]
