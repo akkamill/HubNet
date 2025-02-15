@@ -1,14 +1,19 @@
+FROM ubuntu:latest
+LABEL authors="ASUS"
+
+ENTRYPOINT ["top", "-b"]
+
 # Use an official JDK image
 FROM openjdk:17-jdk
-  
+
 # Set the working directory
 WORKDIR JAVA_HOME
 
 # Copy the application JAR file (replace with your actual JAR file)
 COPY target/HubNet-0.0.1-SNAPSHOT.jar.original app.jar
-  
+
 # Expose the application port
 EXPOSE 7070
-  
+
 # Run the application
 CMD ["java", "-jar", "app.jar"]
