@@ -24,9 +24,9 @@ First, update the `ProductRepository` to include a method for filtering products
 Using Spring Data JPA Specifications:
 
 ```java
-package com.example.ecommerceDemo.repositories.eCommerce;
+package com.example.hubNet.repositories.eCommerce;
 
-import com.example.ecommerceDemo.entities.eCommerce.ProductEntity;
+import com.example.hubNet.entities.eCommerce.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -39,9 +39,9 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long>, J
 Create a specification class to handle dynamic queries:
 
 ```java
-package com.example.ecommerceDemo.repositories.eCommerce;
+package com.example.hubNet.repositories.eCommerce;
 
-import com.example.ecommerceDemo.entities.eCommerce.ProductEntity;
+import com.example.hubNet.entities.eCommerce.ProductEntity;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.math.BigDecimal;
@@ -75,10 +75,10 @@ public class ProductSpecification {
 Create a controller to handle the filtering requests:
 
 ```java
-package com.example.ecommerceDemo.controllers.eCommerce;
+package com.example.hubNet.controllers.eCommerce;
 
-import com.example.ecommerceDemo.DTO.eCommerce.ProductDTO;
-import com.example.ecommerceDemo.services.eCommerce.ProductService;
+import com.example.hubNet.DTO.eCommerce.ProductDTO;
+import com.example.hubNet.services.eCommerce.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
@@ -86,7 +86,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.example.ecommerceDemo.repositories.eCommerce.ProductSpecification.*;
+import static com.example.hubNet.repositories.eCommerce.ProductSpecification.*;
 
 @RestController
 @RequestMapping("/api/products")
@@ -132,12 +132,12 @@ public class ProductController {
 Add the `filterProducts` method in `ProductService`:
 
 ```java
-package com.example.ecommerceDemo.services.eCommerce;
+package com.example.hubNet.services.eCommerce;
 
-import com.example.ecommerceDemo.DTO.eCommerce.ProductDTO;
-import com.example.ecommerceDemo.entities.eCommerce.ProductEntity;
-import com.example.ecommerceDemo.repositories.eCommerce.ProductRepository;
-import com.example.ecommerceDemo.services.mappers.eCommerce.ProductMappers;
+import com.example.hubNet.DTO.eCommerce.ProductDTO;
+import com.example.hubNet.entities.eCommerce.ProductEntity;
+import com.example.hubNet.repositories.eCommerce.ProductRepository;
+import com.example.hubNet.services.mappers.eCommerce.ProductMappers;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.domain.Specification;
